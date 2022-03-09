@@ -34,6 +34,6 @@ function goToSettings () {
 }
 let sound = new Audio('/audio/button.mp3');
 startButton.addEventListener('mouseover', () => {
-    let sound = new Audio('/audio/button.mp3');
+    let sound = new Audio('audio/button.mp3');
     sound.play();
 })
