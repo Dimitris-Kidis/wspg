@@ -3,6 +3,7 @@ body {
   /* background-position: center; */
   background-repeat: no-repeat;
   background-size: calc(100%);
+  margin: 0;
 }
 
 @font-face {
@@ -24,7 +25,7 @@ body {
 }
 
 .hidden {
-  display: none;
+  display: none !important;
 }
 
 .menu-buttons {
@@ -74,7 +75,9 @@ body {
 #start-button:hover,
 #credits-button:hover,
 #exit-button:hover,
-#back-button:hover {
+#back-button:hover,
+#play-button:hover,
+#back-button-2:hover {
   -webkit-filter: brightness(70%);
   -webkit-transition: all 1s ease;
   -moz-transition: all 1s ease;
@@ -97,11 +100,13 @@ body {
 #container {
   margin: 0 auto;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   text-align: center;
 }
 
-#back-button {
+#back-button,
+#back-button-2 {
   height: 80px;
   margin-top: 20px;
   text-align: center;
@@ -109,4 +114,110 @@ body {
 
 #text {
   text-align: center;
+}
+
+.levels {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.mode-names {
+  margin-top: -5px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+#play-button {
+  height: 80px;
+  margin-top: 50px;
+}
+
+#settings {
+  color: white;
+}
+
+.settings-title {
+  font-size: 33px !important;
+  margin: 20px 0px;
+}
+
+.input {
+  margin-right: 15px;
+  margin-left: 15px;
+
+  opacity: 0;
+}
+
+#unchecked {
+  width: 20px;
+}
+
+.tested {
+}
+
+/* .mode-names-2 {
+  margin-top: 50px;
+  margin-left: 10px;
+  margin-right: 10px;
+} */
+
+.arrows {
+  display: flex;
+  flex-direction: column;
+}
+
+#arrow-up-1,
+#arrow-down-1,
+#arrow-up-2,
+#arrow-down-2 {
+  width: 15px;
+}
+
+#arrow-up-1:hover,
+#arrow-down-1:hover,
+#arrow-up-2:hover,
+#arrow-down-2:hover {
+  -webkit-filter: brightness(70%);
+  -webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  -ms-transition: all 1s ease;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+#icon-box-time,
+#icon-box-xp {
+  margin-left: 15px;
+  cursor: pointer;
+}
+
+.icon-box {
+  cursor: pointer;
+}
+
+.header {
+  width: 100%;
+  height: 10vh;
+  margin: 0 auto;
+  border-bottom: 2px solid rgba(31, 31, 31, 0.247);
+  background-color: rgba(167, 167, 167, 0.527);
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.star,
+.heart {
+  width: 35px;
+}
+
+.timer {
+  color: whitesmoke;
+  font-size: 30px;
+  height: 40px;
 }

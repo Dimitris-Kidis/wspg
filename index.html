@@ -11,6 +11,7 @@
 </head>
 
 <body>
+    <!-- <div class="hidden"> -->
     <span id="title">Water Sort Puzzle Game</span>
     <div class="menu" id="menu">
         <div class="menu-buttons">
@@ -35,17 +36,67 @@
         </div>
     </div>
 
-    
-    <div class="settings" id="settings">
-        <!-- <div class="button"><img id="play-button" src="/icons/play.png" alt=""></div> -->
+    <div class="hidden" id="settings">
+        <div id="container">
+            <div class="button"><img id="play-button" src="icons/play.png" alt=""></div>
 
-        <div class="settings-title">Difficulty:</div>
-        <div class="levels"></div>
+            <div class="settings-title">Difficulty:</div>
+                <div class="levels">
+                    
+                    <img class="icon-box" src="icons/radiobox.png" id="unchecked" alt="">
+                    <span class="mode-names">Easy</span>
+                    <img class="icon-box" src="icons/radiobox.png" id="unchecked" alt="">
+                    <span class="mode-names">Medium</span>
+                    <img class="icon-box" src="icons/radiobox.png" id="unchecked" alt="">
+                    <span class="mode-names">Hard</span>
+                </div>
 
-        <div class="settings-title">Options:</div>
+            <div class="settings-title">Options:</div>
+                <div class="levels">
+                    <img id="icon-box-time" src="icons/radiobox.png" style="width: 20px;" alt=""><span class="mode-names">Time</span><span class="mode-names" id="input-time">01:00</span><div class="arrows" ><img src="icons/arrow-up.png" id="arrow-up-1" alt=""><img id="arrow-down-1" src="icons/arrow-down.png" alt=""></div>
 
-        <!-- <div class="button"><img id="back-button-2" src="/icons/back2.png" alt=""></div> -->
+                    <img id="icon-box-xp" src="icons/radiobox.png" style="width: 20px;" alt=""><span class="mode-names">XP</span><span class="mode-names" id="input-xp">1</span><div class="arrows" ><img src="icons/arrow-up.png" id="arrow-up-2" alt=""><img id="arrow-down-2" src="icons/arrow-down.png" alt=""></div>
+                    
+                    
+                    <div><img src="" alt=""><img src="" alt=""></div>
+                </div>
+            <div class="sound-icons">
+                <img src="" alt="">
+                <img src="" alt="">
+            </div>
+
+
+            <div class="button"><img id="back-button-2" src="icons/back.png" alt=""></div>
+        </div>
     </div>
+
+</div>
+    <div class="header hidden" id="header">
+        <div class="stars">
+            <img src="icons/full-star-2.png" class="star" alt="">
+            <img src="icons/full-star-2.png" class="star" alt="">
+            <img src="icons/full-star-2.png" class="star" alt="">
+            <img src="icons/full-star-2.png" class="star" alt="">
+            <img src="icons/empty-star-2.png" class="star" alt="">
+
+        </div>
+        <div class="timer" id="timer">
+            00:57
+        </div>
+        <div class="xp">
+            <img src="icons/full-heart.png" class="heart" alt="">
+            <img src="icons/full-heart.png" class="heart" alt="">
+            <img src="icons/empty-heart.png" class="heart" alt="">
+            <img src="icons/full-heart.png" class="heart" alt="">
+            <img src="icons/full-heart.png" class="heart" alt="">
+        </div>
+    </div>
+
+
+
+
+
+
 
     <div class="gameplay hidden"></div>
 
