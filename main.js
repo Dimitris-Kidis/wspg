@@ -21,6 +21,8 @@ const title = document.getElementById('title');
 
 var difficulty = 0;
 
+const audioIcons = document.getElementById('audio-icons');
+
 
 startButton.addEventListener('click', () => {
     buttonSound.play();
@@ -61,6 +63,23 @@ backButton2.addEventListener('click', () => {
     settings.classList.add('hidden');
     menu.classList.remove('hidden');
 })
+
+
+const melody = document.getElementById('melody');
+const sound = document.getElementById('sound');
+
+var melodySwitch = false;
+// melody.addEventListener('click', () => {
+//     if ( !melodySwitch ) {
+//         melody.setAttribute('src', 'icons/melody-off.png');
+//         melodySwitch = true;
+//     } else {
+//         melody.setAttribute('src', 'icons/melody.png');
+//         melodySwitch = false;
+//     }
+// })
+
+
 
 function goToSettings () {
     menu.classList.add('hidden');
@@ -183,21 +202,81 @@ function headerFoo () {
     let t = setTimeout(function(){ headerFoo() }, 1000); 
 }
 
+var timerID = 0;
+function timerStart ( timeCount ) {
+    let secs = 60 * timeCount; 
+    let oneFifth = Math.floor(secs / 5);
+    let fullTime = secs;
+    for(let i = 0; i < 5; i++){
+        stars.innerHTML += `<img src="icons/full-star-2.png" class="star" alt="">`;
+    }
+    timerID = setInterval(() => {
+        if ( secs < fullTime - oneFifth && secs > fullTime - (2*oneFifth)  ) {
+            console.log('четвертая');
+            starsCollection[4].setAttribute('src', 'icons/empty-star-2.png');
+        } else if ( secs < fullTime - (2*oneFifth) && secs > fullTime - (3*oneFifth) ) {
+            console.log('третья');
+            starsCollection[3].setAttribute('src', 'icons/empty-star-2.png');
+        } else if ( secs < fullTime - (3*oneFifth) && secs > fullTime - (4*oneFifth) ) {
+            console.log('вторая');
+            starsCollection[2].setAttribute('src', 'icons/empty-star-2.png');
+        } else if ( secs < fullTime - (4*oneFifth)  ) {
+            console.log('первая');
+            starsCollection[1].setAttribute('src', 'icons/empty-star-2.png');
+        } 
 
-const stars = document.getElementsByClassName('stars');
-const hearts = document.getElementsByClassName('xp');
+        
+        if ( secs >= 0 ) {
+            timer.innerHTML = `0${zeroPad((Math.floor(secs/60)),1)}:${zeroPad((secs%60),2)}`;
+            secs--;
+        } else {
+            console.log('finished');
+            clearInterval(timerID);
+        }
+        
+    }, 1000);
+}
+
+function heartsStart (xpCount) {
+    for(let i = 0; i < xpCount; i++){
+        hearts.innerHTML += `<img src="icons/full-heart.png" class="heart" alt="">`;
+    }
+
+}
+
+const zeroPad = (num, places) => String(num).padStart(places, '0');
+
+
+const starsCollection = document.getElementsByClassName('star');
+const heartsCollection = document.getElementsByClassName('heart');
+const stars = document.getElementById('stars');
+const hearts = document.getElementById('hearts');
 
 function START (difficulty, hasTime, hasXP, timeCount, xpCount) {
     settings.classList.add('hidden');
     title.setAttribute('style', 'display: none !important;');
     header.classList.remove('hidden');
-    
+
     if ( hasTime % 2 == 0 && hasXP % 2 == 0 ) {
         stars.classList.add('hidden');
-
         hearts.classList.add('hidden');
         headerFoo();
+    } else if ( hasTime % 2 != 0 && hasXP % 2 == 0 ) {
+        console.log(starsCollection);
+        hearts.classList.add('hidden');
+        timerStart(timeCount);
+    } else if ( hasTime % 2 == 0 && hasXP % 2 != 0 ) {
+        heartsStart(xpCount);
+        headerFoo();
+        stars.classList.add('hidden');
+    } else if ( hasTime % 2 != 0 && hasXP % 2 != 0 ) {
+        timerStart(timeCount);
+        heartsStart(xpCount);
     }
+
+
+
+
     console.log(`
     ${difficulty} - difficulty
     ${hasTime % 2 == 0 ? false : true} - time: 0 | 1

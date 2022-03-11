@@ -6,6 +6,11 @@ body {
   margin: 0;
 }
 
+a {
+  text-decoration: none;
+  color: white;
+}
+
 @font-face {
   font-family: "ArcadeClassic";
   src: url("font/ArcadeClassic.eot");
@@ -178,7 +183,8 @@ body {
 #arrow-up-1:hover,
 #arrow-down-1:hover,
 #arrow-up-2:hover,
-#arrow-down-2:hover {
+#arrow-down-2:hover,
+#audio-icons:hover {
   -webkit-filter: brightness(70%);
   -webkit-transition: all 1s ease;
   -moz-transition: all 1s ease;
@@ -214,10 +220,20 @@ body {
 .star,
 .heart {
   width: 35px;
+  margin-left: 10px;
 }
 
 .timer {
   color: whitesmoke;
   font-size: 30px;
   height: 40px;
+}
+
+#audio-icons {
+  width: 50px;
+  margin: 0px 10px;
+}
+
+.audio {
+  margin: 10px 0px;
 }
