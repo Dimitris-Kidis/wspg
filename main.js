@@ -74,9 +74,13 @@ var soundSwitch = false;
 melody.addEventListener('click', () => {
     soundCheck(soundFlag);
     if ( !melodySwitch ) {
+        musicFlag = false;
+        musicCheck(musicFlag);
         melody.setAttribute('src', 'icons/melody-off.png');
         melodySwitch = true;
     } else {
+        musicFlag = true;
+        musicCheck(musicFlag);
         melody.setAttribute('src', 'icons/melody.png');
         melodySwitch = false;
     }
@@ -114,11 +118,21 @@ sound.addEventListener('click', () => {
     }
 })
 
+var mainTheme = new Audio('audio/gameMelody.mp3');
+var musicFlag = true;
 
+function musicCheck ( flag ) {
+    if ( flag === true ) {
+        mainTheme.play();
+    } else {
+        mainTheme.pause();
+    }
+}
 
 function goToSettings () {
     menu.classList.add('hidden');
     settings.classList.remove('hidden');
+    musicCheck(musicFlag);
 }
 
 const icons = document.getElementsByClassName('icon-box');
