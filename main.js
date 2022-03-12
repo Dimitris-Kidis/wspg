@@ -9,7 +9,7 @@ const backButton2 = document.getElementById('back-button-2');
 const exitButton = document.getElementById('exit-button');
 const playButton = document.getElementById('play-button');
 
-const buttonSound = new Audio('audio/button.mp3');
+let buttonSound = new Audio('audio/button.mp3');
 
 const buttonCollection = document.getElementsByClassName('button');
 
@@ -25,7 +25,7 @@ const audioIcons = document.getElementById('audio-icons');
 
 
 startButton.addEventListener('click', () => {
-    buttonSound.play();
+    soundCheck(soundFlag);
     goToSettings();
 
 })
@@ -33,33 +33,33 @@ startButton.addEventListener('click', () => {
 creditsButton.addEventListener('click', () => {
     menu.classList.add('hidden');
     creditsText.classList.remove('hidden');
-    buttonSound.play();
+    soundCheck(soundFlag);
 
 })
 
 backButton.addEventListener('click', () => {
-    buttonSound.play();
+    soundCheck(soundFlag);
     creditsText.classList.add('hidden');
     menu.classList.remove('hidden');
     
 })
 
 exitButton.addEventListener('click', () => {
-    buttonSound.play();
+    soundCheck(soundFlag);
     window.open("", "_self");
     window.close();
     
 })
 
 playButton.addEventListener('click', () => {
-    buttonSound.play();
+    soundCheck(soundFlag);
     console.log(index);
     // START(diffuculty, hasTime, hasXP, timeCount, XPcount);
     START(difficulty, time, XP, timeCount, xpCount);
 })
 
 backButton2.addEventListener('click', () => {
-    buttonSound.play();
+    soundCheck(soundFlag);
     settings.classList.add('hidden');
     menu.classList.remove('hidden');
 })
@@ -67,17 +67,52 @@ backButton2.addEventListener('click', () => {
 
 const melody = document.getElementById('melody');
 const sound = document.getElementById('sound');
-
+console.log(melody);
 var melodySwitch = false;
-// melody.addEventListener('click', () => {
-//     if ( !melodySwitch ) {
-//         melody.setAttribute('src', 'icons/melody-off.png');
-//         melodySwitch = true;
-//     } else {
-//         melody.setAttribute('src', 'icons/melody.png');
-//         melodySwitch = false;
-//     }
-// })
+var soundSwitch = false;
+
+melody.addEventListener('click', () => {
+    soundCheck(soundFlag);
+    if ( !melodySwitch ) {
+        melody.setAttribute('src', 'icons/melody-off.png');
+        melodySwitch = true;
+    } else {
+        melody.setAttribute('src', 'icons/melody.png');
+        melodySwitch = false;
+    }
+})
+
+function soundCheck (flag) {
+    if ( flag === true) {
+        buttonSound.play();
+        console.log('Есть звук!');
+    } else if ( flag === false ) {
+        console.log('Нет звука!');
+    }
+}
+
+var soundFlag = true;
+sound.addEventListener('click', () => {
+    soundCheck(soundFlag);
+
+    if ( !soundSwitch ) {
+
+        soundFlag = false;
+        soundCheck(soundFlag);
+        sound.setAttribute('src', 'icons/sound-off.png');
+        soundSwitch = true;
+
+    } else {
+        
+        soundFlag = true;
+        soundCheck(soundFlag);
+        
+        sound.setAttribute('src', 'icons/sound.png');
+        // buttonSound = new Audio('audio/button.mp3');
+
+        soundSwitch = false;
+    }
+})
 
 
 
@@ -90,7 +125,7 @@ const icons = document.getElementsByClassName('icon-box');
 
 var index = -1;
 function radioboxChecked ( item ) {
-    buttonSound.play();
+    soundCheck(soundFlag);
     item.target.classList.add('tested');
     for(let i = 0; i < 3; i++) {
         icons[i].setAttribute('src', 'icons/radiobox.png');
@@ -117,11 +152,11 @@ var XP = 0;
 iconBoxTime.addEventListener('click', () => {
     if ( time % 2 == 0 ) {
         iconBoxTime.setAttribute('src', 'icons/radiobox2.png');
-        buttonSound.play();
+        soundCheck(soundFlag);
         time++;
     } else {
         iconBoxTime.setAttribute('src', 'icons/radiobox.png');
-        buttonSound.play();
+        soundCheck(soundFlag);
         time++;
     }
 })
@@ -129,11 +164,11 @@ iconBoxTime.addEventListener('click', () => {
 iconBoxXP.addEventListener('click', () => {
     if ( XP % 2 == 0 ) {
         iconBoxXP.setAttribute('src', 'icons/radiobox2.png');
-        buttonSound.play();
+        soundCheck(soundFlag);
         XP++;
     } else {
         iconBoxXP.setAttribute('src', 'icons/radiobox.png');
-        buttonSound.play();
+        soundCheck(soundFlag);
         XP++;
     }
 })

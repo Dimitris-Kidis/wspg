@@ -184,7 +184,7 @@ a {
 #arrow-down-1:hover,
 #arrow-up-2:hover,
 #arrow-down-2:hover,
-#audio-icons:hover {
+.audio-icons:hover {
   -webkit-filter: brightness(70%);
   -webkit-transition: all 1s ease;
   -moz-transition: all 1s ease;
@@ -229,9 +229,10 @@ a {
   height: 40px;
 }
 
-#audio-icons {
+.audio-icons {
   width: 50px;
   margin: 0px 10px;
+  cursor: pointer;
 }
 
 .audio {
