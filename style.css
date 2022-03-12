@@ -178,6 +178,7 @@ a {
 #arrow-up-2,
 #arrow-down-2 {
   width: 15px;
+  padding: 1px;
 }
 
 #arrow-up-1:hover,
